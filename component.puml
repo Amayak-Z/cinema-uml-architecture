@@ -1,0 +1,29 @@
+@startuml component
+title 7. Диаграмма компонентов ИС «Онлайн-кинотеатр»
+
+skinparam componentStyle uml2
+
+' 1. Описываем сами компоненты 
+[Веб-клиент] as WC
+[Серверный API] as API
+[Сервис авторизации] as Auth
+[Платежный сервис] as Pay
+[Хранилище медиа] as Store
+WC -(0- API : REST / JSON
+' Сервер использует интерфейс Авторизации
+Auth -up- IAuth
+API -(0- IAuth : проверка прав
+
+' Сервер использует интерфейс Оплаты
+Pay -up- IPay
+API -(0- IPay : проведение оплаты
+
+' Сервер использует интерфейс Хранилища
+Store -up- IStore
+API -(0- IStore : запрос видео
+
+note right of API
+  Центральный компонент, 
+  управляющий зависимостями
+end note
+@enduml

@@ -1,0 +1,23 @@
+@startuml deployment
+title 8. Диаграмма развертывания ИС «Онлайн-кинотеатр»
+
+' 1. Узлы и их содержимое
+node "Устройство пользователя" <<Device>> {
+    [Веб-клиент (WC)] as WC
+}
+node "Сервер приложений" <<Server>> {
+    [Серверный API] as API
+    [Сервис авторизации] as Auth
+    [Платежный сервис] as Pay
+}
+node "Сервер базы данных" <<Database Server>> {
+    database "База данных (SQL)" as DB
+}
+node "Облачное хранилище видео" <<Cloud>> {
+    [Хранилище медиа] as Store
+}
+' Связи (Протоколы общения)
+WC -- API : HTTPS
+API -- DB : "SQL / JDBC"
+API -- Store : "S3 Protocol"
+@enduml

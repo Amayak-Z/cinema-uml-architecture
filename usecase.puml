@@ -1,0 +1,38 @@
+@startuml usecase
+title 5. Диаграмма вариантов использования ИС «Онлайн-кинотеатр»
+
+left to right direction
+
+' Объявляем акторов и их наследование
+actor "Гость" as G
+actor "Пользователь" as U
+actor "Администратор" as A
+
+U --|> G : наследует
+A --|> U : наследует
+
+' Граница системы кинотеатра
+rectangle "Онлайн-кинотеатр" {
+    usecase "Регистрация" as Register
+    usecase "Вход в систему" as Login
+    usecase "Просмотр каталога" as ViewCatalog
+    usecase "Просмотр фильма" as WatchMovie
+    usecase "Проверить подписку" as CheckSub
+    usecase "Управление фильмами" as ManageMovies
+}
+
+' Связи для Гостя
+G --> ViewCatalog : просмотр
+G --> Login : вход
+
+' Связи для Пользователя
+U --> WatchMovie : просмотр
+
+' Связи для Администратора
+A --> ManageMovies : администрирование
+
+' Внутренние связи UML (include и extend)
+Login <.. Register : <<extend>> (если нет аккаунта)
+WatchMovie ..> CheckSub : <<include>> (обязательно при запуске)
+
+@enduml
