@@ -6,19 +6,35 @@
 
 ### 1. Сценарии использования (Use Case)
 Описывает роли пользователей и ключевые сценарии взаимодействия с системой кинотеатра.
-![Use Case](https://plantuml.com)
+```puml
+@startuml
+!include usecase.puml
+@enduml
+```
 
 ### 2. Компонентная архитектура (Component)
 Показывает внутренние модули системы и связи между ними.
-![Component](https://plantuml.com)
+```puml
+@startuml
+!include component.puml
+@enduml
+```
 
 ### 3. Диаграмма развертывания (Deployment)
 Схема физического размещения сервисов и баз данных по серверам.
-![Deployment](https://plantuml.com)
+```puml
+@startuml
+!include deployment.puml
+@enduml
+```
 
 ### 4. Диаграмма взаимодействия (Communication)
 Иллюстрирует динамическое взаимодействие и обмен сообщениями между объектами.
-![Communication](https://plantuml.com)
+```puml
+@startuml
+!include communication.puml
+@enduml
+```
 
 ## 🛠️ Технологический стек проектирования
 * **Язык моделирования**: UML 2.0
